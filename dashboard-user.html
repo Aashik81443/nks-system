@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - NKSystem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex">
+
+    <!-- Sidebar Menu -->
+    <div class="w-64 bg-gray-800 text-white min-h-screen p-4" id="sidebar">
+        <h2 class="text-xl font-bold mb-4">NKSystem</h2>
+        <ul>
+            <li class="mb-2"><a href="dashboard-user.html" class="block p-2 hover:bg-gray-700">Dashboard</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-6">
+        <!-- Welcome message -->
+        <div class="flex justify-between items-center mb-4">
+            <div>
+                <h1 class="text-2xl font-bold">Dashboard</h1>
+                <p class="text-gray-600" id="welcome-message">Welcome, <span id="user-name"></span></p>
+            </div>
+            <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded">Logout</button>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex gap-4 mb-4">
+            <input type="file" id="csvFile" accept=".csv" class="hidden" onchange="uploadCSV()">
+            <button onclick="document.getElementById('csvFile').click()" class="bg-blue-500 text-white px-4 py-2 rounded">Upload TD Report</button>
+        </div>
+
+        <!-- Summary Cards Grid -->
+        <div class="grid grid-cols-2 gap-6 mb-6">
+            <!-- Estimation Summary Card -->
+            <div class="bg-white p-4 rounded-lg shadow">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-700">Total Estimated Hours</h3>
+                        <p class="text-sm text-gray-500">All assigned tasks</p>
+                    </div>
+                    <div class="text-2xl font-bold text-blue-600" id="total-estimation">0 hrs</div>
+                </div>
+            </div>
+            
+            <!-- Tracked Time Summary Card -->
+            <div class="bg-white p-4 rounded-lg shadow">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-700">Total Tracked Hours</h3>
+                        <p class="text-sm text-gray-500">Today's tracked time</p>
+                    </div>
+                    <div class="text-2xl font-bold text-green-600" id="total-tracked">0 hrs</div>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <h2 class="text-lg font-bold mb-2">My Tasks</h2>
+            <table class="w-full bg-white shadow-md rounded border-collapse">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="p-2 text-left border w-12">S.N.</th>
+                        <th class="p-2 text-left border w-96">Project Name</th>
+                        <th class="p-2 text-left border w-48">Task Name</th>
+                        <th class="p-2 text-left border w-24">Estimation</th>
+                        <th class="p-2 text-left border w-[21.6rem]">Notes</th>
+                        <th class="p-2 text-left border w-12">Link</th>
+                        <th class="p-2 text-center border w-20">Complete</th>
+                    </tr>
+                </thead>
+                <tbody id="task-list">
+                    <!-- Tasks will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
